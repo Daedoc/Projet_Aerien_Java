@@ -28,8 +28,19 @@ public class Avion {
     public void setCapacite(int capacite){this.capacite=capacite;}
     public void setMonVol(Vol monVol) {this.monVol = monVol;}
 
-    public void affecterVol(){}
-    public void verifierDisponibilite(){}
+    public void affecterVol(Vol vol){
+        setMonVol(vol);
+        System.out.println("Le vol "+monVol.getNumeroVol()+" a bien été affecté!");
+    }
+    public boolean verifierDisponibilite(){
+        if(monVol==null){
+            System.out.println("L'avion est disponible ");
+            return true;
+        }else {
+            System.out.println("L'avion n'est pas disponible ");
+            return false;
+        }
+    }
 
     @Override
     public String toString(){

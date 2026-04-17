@@ -62,10 +62,29 @@ public class Vol {
     public void setAeroportArrivee(Aeroport aeroportArrivee) {this.aeroportArrivee = aeroportArrivee;}
     public void setReservations(ArrayList<Reservation> reservations) {this.reservations = reservations;}
 
-    public void planifierVol(){}
-    public void annulerVol(){}
-    public void modifierVol(){}
-    public void listingPassenger(){}
+    public void planifierVol(ArrayList<Vol> planning){
+        planning.add(this);
+        System.out.println("Vol " +numeroVol+ " ajouté au planning");
+    }
+    public void annulerVol(){
+        etat = "Annulé";
+        System.out.println("Vol "+numeroVol+" a été "+etat);
+    }
+    public void modifierVol(String origine, String destination,String dateHeureDepart,
+                            String dateHeureArrivee, String etat){
+        setOrigine(origine);
+        setDestination(destination);
+        setDateHeureDepart(dateHeureDepart);
+        setDateHeureArrivee(dateHeureArrivee);
+        setEtat(etat);
+        System.out.println("--- Le vol "+numeroVol+" a bien été modifié! ---");
+    }
+    public void listingPassenger(){
+        System.out.println("--- Liste des passagers du vol "+numeroVol+" ---");
+        for (int i = 0 ; i<reservations.size();i++){
+            System.out.println(reservations.get(i).getPassager());
+        }
+    }
 
     @Override
     public String toString(){

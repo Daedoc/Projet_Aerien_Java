@@ -44,5 +44,32 @@ public class Reservation {
     }
     public void setPassager(Passager passager){this.passager = passager;}
 
+    public void confirmerReservation(){
+        statut = "Confirmé";
+        System.out.println("La Réservation N° : "+numeroReservation+" a été "+statut);
+    }
+    public void annulerReservation(){
+        statut = "Annulé";
+        System.out.println("La Réservation N° : "+numeroReservation+" a été "+statut);
+    }
+    public void modifierReservation(String dateReservation, String statut,
+                                    Vol vol){
+        setDateReservation(dateReservation);
+        setStatut(statut);
+        setVol(vol);
+        System.out.println("--- La Réservation "+numeroReservation+" a bien été modifié! ---");
+
+    }
+
+    @Override
+    public String  toString(){
+        return "Réservation N° : "+numeroReservation+
+                "\tDate Réservation : "+dateReservation+
+                "\nStatut : "+statut+
+                "\tVol : "+vol+
+                "\nPassager : "+passager;
+    }
+
+
 }
 

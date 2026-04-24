@@ -11,8 +11,10 @@ public class Main {
         ArrayList<Avion> avions = new ArrayList<>();
         ArrayList<Aeroport> aeroports = new ArrayList<>();
 
-        int choix = 0;
+        GestionFichiers.importerVols("vols.csv", vols);
+        System.out.println("Vols chargés : " + vols.size());
 
+        int choix = 0;
         while (choix != 7) {
             System.out.println("\n=== Système de Réservation ===");
             System.out.println("1. Créer un passager");

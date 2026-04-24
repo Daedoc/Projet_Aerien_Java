@@ -69,15 +69,14 @@ public class Main {
 
                     Avion avion = new Avion(immat, modele, capacite, null);
                     avions.add(avion);
-                    System.out.println("✅ Avion " + modele + " créé !");
+                    System.out.println(" --- Avion " + modele + " créé !");
                     break;
 
                 case 4: // Créer un vol
                     if (avions.isEmpty() || aeroports.size() < 2) {
-                        System.out.println("❌ Créez d'abord au moins 1 avion et 2 aéroports !");
+                        System.out.println("--- Créez d'abord au moins 1 avion et 2 aéroports ! ---");
                         break;
                     }
-
                     System.out.print("Numéro de vol : ");
                     String numVol = sc.nextLine();
                     System.out.print("Origine : ");
@@ -95,12 +94,13 @@ public class Main {
                             aeroports.get(1), new ArrayList<>());
                     vols.add(vol);
                     avions.get(0).affecterVol(vol);
-                    System.out.println("✅ Vol " + numVol + " créé !");
+                    GestionFichiers.exporterVols("vols.csv", vols); // ← AJOUT !
+                    System.out.println("--- Vol " + numVol + " créé et sauvegardé ! ---");
                     break;
 
                 case 5: // Réserver un vol
                     if (passagers.isEmpty() || vols.isEmpty()) {
-                        System.out.println("❌ Créez d'abord un passager et un vol !");
+                        System.out.println("--- Créez d'abord un passager et un vol ! ---");
                         break;
                     }
 
@@ -110,9 +110,13 @@ public class Main {
                     System.out.print("Date de réservation : ");
                     String dateResa = sc.nextLine();
 
-                    // On prend le premier passager et premier vol pour simplifier
                     passagers.get(0).reserverVol(numResa, dateResa, "En attente", vols.get(0));
-                    System.out.println("✅ Réservation effectuée !");
+
+                    // Récupérer la réservation qu'on vient de créer et la sauvegarder
+                    Reservation nouvelleResa = passagers.get(0).getReservations()
+                            .get(passagers.get(0).getReservations().size() - 1);
+                    GestionFichiers.sauvegarderReservation("reservations.csv", nouvelleResa); // ← AJOUT !
+                    System.out.println("--- Réservation effectuée et sauvegardée ! ---");
                     break;
 
                 case 6: // Rapport
@@ -125,7 +129,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("❌ Choix invalide !");
+                    System.out.println("!!---Choix invalide ! --!!!");
             }
         }
         sc.close();

@@ -1,0 +1,4 @@
+numeroVol;origine;destination;dateHeureDepart;dateHeureArrivee;etat
+AF123;Paris;New York;18/04/2025 10:00;18/04/2025 22:00;Prévu
+AF456;Lyon;Rome;19/04/2025 08:00;19/04/2025 10:00;Prévu
+AF789;Paris;Tokyo;20/04/2025 11:00;21/04/2025 06:00;Prévu
